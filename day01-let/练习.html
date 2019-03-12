@@ -1,0 +1,61 @@
+
+console.log(a); 
+let a = 10;
+
+
+
+console.log(b); 
+var b = 10;
+
+
+
+{
+    var a = 10;
+    let b = 20;  
+}
+    console.log(a); 
+    console.log(b); 
+
+
+var a =[];
+for( var i=0; i<10; i++ ){
+    a[i] = function(){
+        console.log(i);
+    }
+}
+
+    for( var j = 0; j<a.length; j++ ){
+        a[j](); 
+    }
+
+var a =[];
+    for( let i=0; i<10; i++ ){
+        a[i] = function(){
+            console.log(i);
+        }
+    }
+
+    for( let j = 0; j<a.length; j++ ){
+        a[j](); //输出 0，1，2，...，9
+    }
+
+var a = 10;
+let a = 10;
+
+console.log(a);
+
+
+let a = 10;
+let a = 15;
+
+console.log(a);
+
+
+
+    let a =10;
+    function fn1(){
+        console.log(a);
+        let a = 5;
+    }
+
+    fn1();
