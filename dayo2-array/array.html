@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        var arr=[2,454,'c','d']
+        // console.log(arr)
+        let entries=arr.keys() //[{0,2},{1,453}]
+        // for-of
+        for(let i of arr){
+            console.log(i)
+        }
+
+        // console.log(arr.includes(2,2))
+
+        // console.log(arr)
+      let newarr= arr.copyWithin(1,2)
+        // console.log(newarr)
+
+
+        let nodelist=document.querySelectorAll('li')
+            //  document.getElementsByTagName('li')
+            console.log(nodelist)
+            console.log(Array.isArray(nodelist))
+
+          let newlist=  Array.from(nodelist)
+        console.log(Array.isArray(newlist))
+    </script>
+</body>
+</html>

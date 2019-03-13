@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <script>
+        let obj={name:'jim',contry:'America',age:18}
+        let str=`我是${obj.name}，来自${obj.contry},我${obj.age>=18?'成年':'未成年'}`
+        document.getElementsByTagName('h1')[0].innerHTML=str
+    </script>
+</body>
+</html>

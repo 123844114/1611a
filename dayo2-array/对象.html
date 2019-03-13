@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let obj1={a:1,b:2}
+    let obj2={c:4,d:{name:'jim'}}
+    let obj3={}
+    Object.assign(obj3,obj2)
+    console.log(obj3,obj2)
+    obj3.d.name='tom'
+    // console.log(obj3,obj2)
+    // 深拷贝：副本与原来的断绝关系
+    //浅拷贝：互相会有影响
+    let jim={name:'jim',sex:'mail'}
+    let son=JSON.parse(JSON.stringify(jim))
+    son.name='tom'
+    // console.log(son,jim)
+    // console.log(Object.keys(jim)) 
+
+    //============object.getownpropertydescriptor 得到对象的属性的配置参数
+    //=============Object.defineproperty
+    let obj = {age:18}
+    Object.defineProperty(obj,'foo',{
+        value:'jim',
+        writable:false,
+        enumerable:false,
+        configurable:false
+    })
+    obj.foo='tom'
+    // delete obj.foo
+    console.log(obj)
+    // for(let k in obj){
+    //     console.log(k)
+    // }
+
+
+
+    </script>
+</body>
+</html>

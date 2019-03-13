@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //   for-of  遍历 遍历器对象
+
+    const obj = { length: 3, 0: 'foo', 1: 'bar', 2: 'baz' };
+    // for(let k of obj){
+    //     console.log(k)
+    // }
+ 
+ const array = Array.from(obj);
+ console.log(array)
+
+
+ let as=[1,2,3].map(function (x) {
+     console.log(this)
+  return x * x;
+});
+
+    </script>
+</body>
+</html>

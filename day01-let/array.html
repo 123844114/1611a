@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var arr1 = [0, 1, 20];
+  let a=  arr1.reduce(function(acc,cur){
+        return acc+cur
+    })
+    console.log(a)
+    // var arr2 = [3, 4, 5];
+    // function copyArr(arr){
+    //     let temp=[]
+    //     arr1.forEach((item)=>{
+    //         temp.push(item)
+    //     })
+    //     return temp
+    // }
+    // let n=copyArr(arr1)
+    // n[0]='jim'
+    // console.log(n,arr1)
+    var obj={name:'zhangsan',age:18}
+    let ss=arr1.find(function(item){console.log(this)},obj)
+    console.log(ss)
+    </script>
+    
+</body>
+</html>

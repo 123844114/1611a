@@ -53,7 +53,7 @@
         })
         return a
     }
-    console.log(sort('sort',25,10,5,1,100))
+    // console.log(sort('sort',25,10,5,1,100))
 
 
     // 练习题:定义一个函数，实现将obj创建成节点creatElement，挂在到body上appendChild,设置属性setAttribute('class',类名)
@@ -64,7 +64,7 @@
             class:'wrap'
         },
         children:[{
-            tab:'h1',
+            tag:'h1',
             props:{
                 id:'title',
                 class:'title'
@@ -72,7 +72,7 @@
             value:'1611a'
         },
         {
-            tab:'p',
+            tag:'p',
             props:{
                 id:'txt',
                 class:'txt'
@@ -80,21 +80,47 @@
             value:'hello world'
         }]
     }
+    // function createDom(obj){
+    //     // 1.解构变量
+    //     let {tag,props}=obj
+    //     // 2.创建node,设置属性
+    //     let node=document.createElement(tag)
+    //     for(let k in props){
+    //         console.log(k)
+    //         node.setAttribute(k,props[k])
+    //     }
+    //     console.log(node)
+    //     // 3.挂载node
+    //     document.body.appendChild(node)
+
+    // }
     function createDom(obj){
         // 1.解构变量
-        let {tag,props}=obj
+        let {tag,props,children,value}=obj
         // 2.创建node,设置属性
         let node=document.createElement(tag)
         for(let k in props){
             console.log(k)
             node.setAttribute(k,props[k])
         }
-        console.log(node)
+        if(value){
+            node.innerHTML=value
+        }
+        
+        if(children){
+            children.forEach(function(item){
+            let childnode=null
+            childnode=createDom(item)
+            console.log(childnode)
+            node.appendChild(childnode)
+        })
+        }
+        return node
         // 3.挂载node
-        document.body.appendChild(node)
+        // document.body.appendChild(node)
 
     }
-    createDom(obj)
+  console.log(createDom(obj))  
     </script>
 </body>
 </html>

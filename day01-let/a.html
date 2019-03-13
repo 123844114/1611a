@@ -7,20 +7,22 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>姓名：jim,age:18</h1>
     <script>
-        var arr=[25,10,5,1,100]
-    function sort(...a){
-        // console.log(a)
-        a.sort((a,b)=>{
-            return a-b
-        })
-        // return a
-    }
-    sort(arr)
-    let a=1
-    console.log(window)
-    function demo(){}
-    let demo=function()
+        window.onload=function(){
+            let obj={name:'jim',age:18}
+        let dom  = document.getElementsByTagName('h1')[0]
+        // dom.innerHTML='大家好，我叫'+obj.name+',我今年'+obj.age+'了'
+        let greeting = `\`Yo\` World!`;
+        // dom.innerHTML=`大家好，我叫${obj.name},我今年了${obj.age>18?'成年了':'未成年'}`
+        function f(){
+            if(true){
+                return 'nihao'
+            }
+            
+        }
+        dom.innerHTML=`${f()}`
+        }
     </script>
 </body>
 </html>
