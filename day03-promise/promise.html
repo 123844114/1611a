@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p=new Promise((resolve,reject)=>{
+            // resolve（）成功时调用
+        //   return resolve('fsdfd')
+           //reject()失败时调用
+        //   return reject(new Error('err'))
+        })
+        // console.log(p.then())
+        
+        // p.then((data)=>{
+        //     console.log(data)
+        // }).catch((err)=>{
+        //     console.log(err)
+        // }).finally(()=>{
+        //     console.log('八维')
+        // })
+
+
+        // $.ajax(
+        //     {
+        //         url:'',
+        //         success:(data)=>{}
+        //         error:()=>{}
+        //     }
+
+        // )
+        var p1=new Promise((resolve,reject)=>{
+            let num=10
+            setTimeout(()=>{
+                resolve(num++)
+            },10)
+        })
+        var p2=new Promise((resolve,reject)=>{
+            let num=10
+            setTimeout(()=>{
+                reject(num+10)
+            },10)
+        })
+      let arr = Promise.all([p1,p2])
+        arr.then((data)=>{
+            console.log(data)
+        }).catch((err)=>{
+            console.log(err)
+        }).finally(()=>{
+            console.log('八维')
+        })
+
+
+        function ajax(url){
+            let p = new Promise((resolve,reject)=>{
+                // 1、创建xml对象
+                let xml = new XMLHttpRequest()
+                // 2、open send
+                xml.open('get',url,true)
+                // 3、监听变化
+                xml.onload=()=>{
+                    if(xml.readyState==4&&xml.status==200){
+                        // 成功
+                       return resolve(xml.responseText)
+                    }
+                    //失败
+                    return reject(new Error('请求失败')) 
+                }
+                xml.send()
+            })
+            
+            return p
+        }
+
+        ajax('/data').then().catch()
+    </script>
+</body>
+</html>

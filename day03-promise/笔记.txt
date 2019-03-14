@@ -1,0 +1,47 @@
+Promise 对象
+
+异步：ajax  setTimeout、animate  有回调函数
+
+$.animate({style},time,()=>{
+    $.animate(..,()=>{
+        $animate(..,()=>{})
+    })
+})
+
+回调地狱  现象
+
+Promise 对象 是解决回调的一种方案
+
+特点：对象的状态不受外界影响:
+
+        pending（进行中）、fulfilled（已成功）和rejected（已失败）
+     一旦状态改变，就不会再变，任何时候都可以得到这个结果
+
+用法:  new Promise() 传一个函数作为参数，
+new Promise((resolve,reject)=>{})  创建的时候就执行
+
+Promise.prototype.then(参数1,参数2)
+Promise.prototype.catch(参数1)  捕获异常
+Promise.prototype.finally(参数1)  都会被执行
+
+Promise.all()  接收一个promise的数组  then里面也是接收到的也是数组
+
+
+实现一个ajax接口
+
+
+/////==========我想控制异步函数的先后顺序
+
+async-await 
+语法： 
+async function demo() {
+    let res1 = await getPromise()
+    console.log(res1, res)
+}
+
+async函数返回一个promise对象，可以通过.then获取return回来的值
+
+await命令后面是一个 Promise 对象，返回该对象的结果。
+如果不是 Promise 对象，就直接返回对应的值。
+
+

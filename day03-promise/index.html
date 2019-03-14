@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>开启成功</h1>
+    <script>
+    // js是单线程的，js是浏览器脚本语言，浏览器渲染的时候不能因为io接口请不回数据来，下半截的页面就不渲染了吧？
+    // 所以js有同步与异步执行之分。
+    // 异步执行：setTimeOut()/setInterval()/ajax()/fs()/$().animate()  都有回调函数
+    // 有一个现象“回调地狱”
+        // 举例1：动画animate
+        // 举例2：ajax
+    /*
+      由来：Promise是异步编程的一种解决方案
+      
+      特点：1、对象的状态不受外界影响；
+               pending（进行中）、fulfilled（已成功）和rejected（已失败）
+            2、一旦状态改变，就不会再变，任何时候都可以得到这个结果。
+              两种状态改变：从pending变为fulfilled和从pending变为rejected
+      优点：将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数
+      缺点：无法取消Promise，一旦新建它就会立即执行，无法中途取消。
+           其次，如果不设置回调函数，Promise内部抛出的错误，不会反应到外部。
+           第三，当处于pending状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。
+
+      用法：
+      Promise是一个构造函数，可以通过new声明实例,接收一个函数作为参数（即回调函数）
+      new Promise((resolve,reject)=>{
+           if (异步操作成功 ){
+            resolve(value);
+        } else {
+            reject(error);
+        }
+       })
+    
+    */
+
+    // new Promise((resolve,reject)=>{
+    //             // resolve('hello')
+    //             reject(new Error('参数无效'))
+    //             // console.log('hi')
+    //     }).then((data)=>{
+    //         console.log(data)
+    //     }).catch((err)=>{
+    //         console.log(err)
+    //     })
+//    console.log(p)
+
+
+
+
+function ajax(url){
+            let p = new Promise((resolve,reject)=>{
+                // 1、创建xml对象
+                let xml = new XMLHttpRequest()
+                // 2、open send
+                xml.open('get',url,true)
+                // 3、监听变化
+                xml.onload=()=>{
+                    if(xml.readyState==4&&xml.status==200){
+                        // 成功
+                       return resolve(xml.responseText)
+                    }
+                    //失败
+                    return reject(new Error('请求失败')) 
+                }
+                xml.send()
+            })
+            
+            return p
+        }
+
+        ajax('/data').then((data)=>{
+           console.log(data)
+        }).catch()
+
+
+
+
+
+    </script>
+</body>
+</html>

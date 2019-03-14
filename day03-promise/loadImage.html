@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    //将图片追加到body中
+    //思路：图片对象加载成功后才能显示到页面，所以用onload控制
+    <script>
+        function loadImg(obj) {
+            return new Promise((resolve, reject) => {
+                let imgobj = new Image();//创建image对象
+                imgobj.onload = () => {//image对象加载成功
+                    resolve(imgobj)
+                };
+                imgobj.onerror = () => {
+                    reject(new Error('img url is not' + obj.url));
+                };
+                imgobj.src = obj.url;
+                imgobj.title = obj.title;
+            })
+        }
+
+        loadImg({
+            title: "1609B",
+            url: "https://ss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/299c55e31d7f50ae4dc85faa90d6f445_121_121.jpg",
+        }).then((img) => {
+            document.body.append(img);
+        }).catch((data) => {
+            console.log(data);
+        })    
+    </script>
+</body>
+
+</html>
