@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    const car = [
+            {
+                groupName:'水果',
+                type:[
+                    {
+                        name:'苹果',
+                        price:10
+                    },
+                    {
+                        name:'橘子',
+                        price:40
+                    },
+                    {
+                        name:'香蕉',
+                        price:90
+                    }
+                ]
+            },
+            {
+                groupName:'蔬菜',
+                type:[
+                    {
+                        name:'芹菜',
+                        price:10
+                    },
+                    {
+                        name:'菠菜',
+                        price:15
+                    },
+                    {
+                        name:'土豆',
+                        price:8
+                    }
+                ]
+            }
+        ]
+
+        function priceSum(sum,item){
+            return sum+item.price
+        }
+        
+        // let result={allPrice:0,group:[]}
+        // car.forEach(({groupName,type})=>{
+        //    let sumPrice=type.reduce(priceSum,0)
+        //    result.group.push({typeName:groupName,price:sumPrice})
+        //    result.allPrice+=sumPrice
+        // })
+        // console.log(result)
+
+
+         let a=car.reduce((total,cur,index,car)=>{
+            //  console.log(total)
+               let p=cur.type.reduce(priceSum,0)
+               total.group.push({typeName:cur.groupName,price:p})
+               total.allPrice+=p
+               return total
+            },{allPrice:0,group:[]})
+
+console.log(a)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 默认值：
+        function demo(a='aff',c=123, b) {
+            console.log(a, b)
+        }
+        // demo('hello',,'abc')
+
+
+
+        function foo({ x, y = 5 } = {}) {
+            console.log(x, y);
+        }
+
+        foo() 
+
+// lenght就是其得到的参数个数
+        console.log(foo.length)
+        console.log((function (a=12312) {}).length) 
+
+        function a(a,v=0,c,d){}
+        a(1,2)
+        console.log(a.length)
+// 参数作用域问题:当参数没有设置默认值的时候是没有作用域一说的
+
+// var x = 1;
+
+// function f(x, y = x) {
+//   console.log(x,y);
+// }
+
+// f() 
+
+ let x = 1;
+function f(y = x) {
+  let x = 2;
+  console.log(y);
+}
+
+f() 
+
+    </script>
+</body>
+
+</html>

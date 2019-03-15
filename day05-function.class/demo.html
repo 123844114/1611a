@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const car = [
+            {
+                groupName:'水果',
+                type:[
+                    {
+                        name:'苹果',
+                        price:10
+                    },
+                    {
+                        name:'橘子',
+                        price:40
+                    },
+                    {
+                        name:'香蕉',
+                        price:90
+                    }
+                ]
+            },
+            {
+                groupName:'蔬菜',
+                type:[
+                    {
+                        name:'芹菜',
+                        price:10
+                    },
+                    {
+                        name:'菠菜',
+                        price:15
+                    },
+                    {
+                        name:'土豆',
+                        price:8
+                    }
+                ]
+            }
+        ]
+//         let result={allPrice:0,group:[]}
+//         car.forEach((item)=>{
+//             console.log(item)
+//             //prePrice 每个类型所对应的价格总和
+//            let prePrice= item.type.reduce((sum,cur)=>{
+//                 return sum+cur.price
+//             },0)
+
+//             // 组装对象
+//              let preObj={
+//                     typeName:item.groupName,
+//                     price:prePrice
+//                 }
+//             //push到group
+//             result.group.push(preObj)
+//             //每次都将prePrice加到allPrice
+//             result.allPrice+=prePrice
+//         })
+//         console.log(result)
+
+
+var arr=[{type:'苹果',price:10},{type:'苹果',price:10}]
+let result=arr.reduce((total,current,index,arr)=>{
+    console.log(total+current.price)
+    return total+current.price
+},0)
+
+console.log(result)
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //         class Person{
+        //            constructor(name){
+        //                this.name=name
+        //            }
+        //          static say(){
+        //                console.log(this.name)
+        //            }
+        //         }
+        // Person.say()
+        //    Person.prototype.sleep=()=>{
+        //        console.log('')
+        //    }
+        //  let p= new Person('张三')
+        //  p.say()
+
+        //  console.log(Person.prototype===p.__proto__)
+        //  console.log(p.__proto__.constructor===Person)
+        //  console.log(Object.getOwnPropertyDescriptors(Person.prototype))
+
+
+        // 人类  属性：name，age，coutry  方法：work
+
+        class Father {
+            constructor(name, age, coutry) {
+                this.name = name
+                this.age = age
+                this.coutry = coutry
+            }
+            work() {
+                console.log('我可以工作')
+            }
+        }
+        let ma = new Father('张三', 40, '中国')
+        //===子类
+        class Son extends Father {
+            constructor(name, age, coutry, hobby) {
+                super(name, age, coutry)
+                this.hobby = hobby 
+            }
+            study(){
+                console.log('fsdf')
+            }
+        }
+
+        let s = new Son('jim', 10, '中国', '坑爹')
+        s.work()
+        console.log(s)
+
+
+
+        // es5:继承
+    function Demo(){
+        this.name='张三'
+        this.say=()=>{
+
+        }
+    }
+    let d = new Demo()
+    function Demo1(){
+
+    }
+    Demo1.prototype=d
+    let ddd=new Demo1()
+    console.log(ddd.name)
+
+    </script>
+</body>
+
+</html>

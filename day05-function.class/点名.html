@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #desk {
+            width: 400px;
+            height: 400px;
+            border: 1px solid red;
+        }
+
+        li {
+            width: 40px;
+            height: 20px;
+            border: 1px solid red;
+            margin: 10px 20px;
+            float: left;
+            list-style: none
+        }
+
+        .current {
+            background: red
+        }
+    </style>
+</head>
+
+<body>
+    <div id="desk"></div>
+    <button id="start">开始</button>
+    <button id="end">结束</button>
+    <script>
+        // 点名类
+
+        class callName {
+            constructor(count, timer, nameList) {
+                this.count = count
+                this.timer = timer
+                this.nameList = nameList
+                this.loopTimer = null
+                this.init()//初始化
+            }
+            init() {
+                //初始化
+                this.show()
+                this.addClickEvent()
+            }
+            getId(id) {
+                //通过ID获取dom
+                return document.getElementById(id)
+            }
+            getClassDoms(classname) {
+                //通过class获取dom
+                return document.getElementsByClassName(classname)
+            }
+            getTagDoms(tagName) {
+                //通过class获取dom
+                return document.getElementsByTagName(tagName)
+            }
+            createDOM(childTag, txt) {
+                //parentTag父节点,childTag子节点
+                //创建dom节点
+                let cDom = document.createElement(childTag)
+                if(txt){
+                    cDom.innerText = txt
+                }
+                return cDom
+            }
+            getFatherDom(fatherTag) {
+                //将li标签追加到ul标签里
+                let fTag = this.createDOM(fatherTag)
+                this.nameList.forEach((txt) => {
+                    fTag.appendChild(this.createDOM('li', txt))
+                })
+                return fTag
+            }
+            show() {
+                this.getId('desk').appendChild(this.getFatherDom('ul'))
+            }
+            start() {
+                //开始点名 点中的加className
+                let LiList = this.getTagDoms('li')
+
+            }
+
+            clearAllClass(className) {
+                //清除全部li标签上的current
+                Array.from(this.getTagDoms('li')).map((item) => {
+                    item.removeAttribute('class')
+                })
+            }
+            loop() {
+                //定时器
+                this.loopTimer = setInterval(() => {
+                    //1、用随机数表示下标
+                    let index = Math.floor(Math.random() * (this.nameList.length))
+                    this.clearAllClass('current')
+                    this.getTagDoms('li')[index].className = 'current'
+                }, this.timer)
+            }
+            stop() {
+                //结束点名
+                console.log(this.loopTimer)
+                clearInterval(this.loopTimer)
+            }
+            addClickEvent() {
+                //给按钮添加事件
+                this.getId('start').onclick = () => {
+                    this.loop()
+                }
+                this.getId('end').onclick = () => {
+                    this.stop()
+                }
+            }
+        }
+
+
+        let classArr = ['张三', '里斯', '王五']
+        new callName(5, 10, classArr)
+    </script>
+</body>
+
+</html>

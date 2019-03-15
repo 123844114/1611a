@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        class Person{
+            constructor(name){
+              this.name=name
+            }
+          static  say(){
+                console.log(this.name)
+            }
+        }
+
+let p=new Person('tom')
+person.say
+console.log(p)
+console.log(Person.prototype===p.__proto__)
+console.log(Object.getOwnPropertyDescriptors(Person.prototype))
+p.say()
+        function Animal(){
+            this.say=function(){
+                console.log('fsdf')
+            }
+        }
+        let a=new Animal()
+        a.say()
+    </script>
+</body>
+</html>

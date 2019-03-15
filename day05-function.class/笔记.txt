@@ -1,0 +1,44 @@
+﻿一、函数新特性
+
+1、函数形参可以设置默认值，当默认值在末尾的时候，调用时可以省略。其他位置调用时不可省
+2、函数形参是惰性求值
+3、函数形参有默认值时，会形成一个单独的作用域
+4、函数的length：希望获得的参数个数。当遇到默认值是第一位时，length为0；rest参数形式不计算。
+如：(function(a, ...b) {}).length  // 1
+
+5、可以将参数默认值设为undefined，表明这个参数是可以省略的
+function foo(optional = undefined) { ··· }
+
+6、函数的name：返回该函数的函数名。
+匿名函数比较特殊
+var f = function () {};
+
+// ES5
+f.name // ""
+
+// ES6
+f.name // "f"
+
+
+数组练习题：看reduce.html
+reduce方法的使用：https://www.cnblogs.com/lizimeme/p/7743742.html
+
+
+二、类class
+class Person{
+    constructor(){}
+    say(){}
+}
+
+1、constructor类必须有，不显示写就会默认添加一个空的。类在 new的时候就调用
+   默认返回一个实例对象即this，但是可以改变
+
+Point.prototype.constructor === Point // true
+b.constructor === B.prototype.constructor // true
+
+三、继承 extends
+class 字类 extends 父类{
+    constructor(){
+        super()
+    }
+}
