@@ -7,7 +7,8 @@ class Person{
         console.log(`我是${this.name},我在${doSomething}`)
     }
 }
-let obj = {name:'jim'}
-function demo(){}
+let obj = {name:'jim1234567'}
+// function demo(){}
 export default {name:'tom'}
-export {Person,obj,demo}
+import com from './common'
+// export {Person,obj,demo}
