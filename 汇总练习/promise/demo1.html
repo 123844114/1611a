@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>animate</title>
+    <style>
+        .ball {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 5px;
+            border-radius: 20px;
+        }
+
+        .ball1 {
+            background: red;
+        }
+
+        .ball2 {
+            background: blue;
+        }
+
+        .ball3 {
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ball ball1" style="margin-left: 0"></div>
+    <div class="ball ball2" style="margin-left: 0"></div>
+    <div class="ball ball3" style="margin-left: 0"></div>
+    <script>
+        var ball1 = document.querySelector(".ball1");
+        var ball2 = document.querySelector(".ball2");
+        var ball3 = document.querySelector(".ball3");
+        function animate(ball, left) {
+            //实现动画ball 元素，left 平移的距离
+            let marginLeft = parseInt(ball.style.marginLeft)
+            return new Promise((resolve, reject) => {
+                // 获取页面上ball的位置marginLeft
+                setInterval(() => {
+                    if (marginLeft == left) {
+                        // 调用下一个球
+                        resolve('qqq')
+                    } else {
+                        if (marginLeft < left) {
+                             marginLeft+=2
+                        } else {
+                            marginLeft-=2  
+                        }
+                        ball.style.marginLeft =marginLeft +'px'
+                    }
+                }, 5)
+            })
+
+        }
+        animate(ball1, 100).then(() => {
+            return animate(ball2, 200)
+        }).then(()=>{
+           return animate(ball3, 300)
+        }).then(()=>{
+            return animate(ball2, 100)
+        })
+    </script>
+</body>
+
+</html>

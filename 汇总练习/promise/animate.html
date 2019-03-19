@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animate</title>
+    <style>
+        .ball {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 5px;
+            border-radius: 20px;
+        }
+        .ball1 {
+            background: red;
+        }
+        .ball2 {
+            background: blue;
+        }
+        .ball3 {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="ball ball1" style="margin-left: 0"></div>
+    <div class="ball ball2" style="margin-left: 0"></div>
+    <div class="ball ball3" style="margin-left: 0"></div>
+    <script>
+        var ball1 = document.querySelector(".ball1");
+        var ball2 = document.querySelector(".ball2");
+        var ball3 = document.querySelector(".ball3");
+        function animate(ball, left, callback) {
+            setTimeout(function () {
+                var marginLeft = parseInt(ball.style.marginLeft, 10);
+                if (marginLeft === left) {
+                    callback && callback();
+                    
+                } else {
+                    if (marginLeft < left) {
+                        marginLeft += 2;
+                    } else {
+                        marginLeft -= 2;
+                    }
+                    ball.style.marginLeft = marginLeft + "px";
+                    animate(ball, left, callback);
+                }
+            }, 13);
+        }
+        animate(ball1, 100, function () {
+            animate(ball2, 200, function () {
+                animate(ball3, 300, function () {
+                    animate(ball1, 200, function () {
+                        animate(ball3, 200, function () {
+                            animate(ball2, 180, function () {
+                                animate(ball2, 220, function () {
+                                    animate(ball2, 200, function () {
+                                        console.log("over");
+                                    })
+                                })
+                            })
+                        })
+                    })
+                }) 
+            })
+        });
+    </script>
+</body>
+</html>

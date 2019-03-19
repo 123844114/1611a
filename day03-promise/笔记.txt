@@ -1,4 +1,4 @@
-Promise 对象
+﻿Promise 对象
 
 异步：ajax  setTimeout、animate  有回调函数
 
@@ -24,7 +24,7 @@ Promise.prototype.then(参数1,参数2)
 Promise.prototype.catch(参数1)  捕获异常
 Promise.prototype.finally(参数1)  都会被执行
 
-Promise.all()  接收一个promise的数组  then里面也是接收到的也是数组
+Promise.all()  接收一个promise的数组，返回一个普通的promise对象，  then里面也是接收到的也是数组
 
 
 实现一个ajax接口
